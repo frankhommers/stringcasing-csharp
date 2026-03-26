@@ -7,7 +7,7 @@
 
     <!-- NuGet metadata -->
     <PackageId>StringCasing</PackageId>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <Authors>Frank Hommers</Authors>
     <Description>High-performance source-only string case conversion extensions using Span and stackalloc. Supports PascalCase, camelCase, kebab-case, snake_case, MACRO_CASE, Train-Case, and more.</Description>
     <PackageTags>string;case;extension;pascal;camel;kebab;snake;macro;train;span;performance</PackageTags>
@@ -29,7 +29,7 @@
   <ItemGroup>
     <None Remove="buildTransitive\**" />
     <None Include="buildTransitive\StringCasing.props" Pack="true" PackagePath="buildTransitive" Visible="false" />
-    <None Include="StringCasingExtensions.cs" Pack="true" PackagePath="contentFiles\cs\any" BuildAction="Compile" />
+    <None Include="StringCasingExtensions.cs" Pack="true" PackagePath="contentFiles\cs\any" BuildAction="None" />
     <None Include="..\..\README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 </Project>

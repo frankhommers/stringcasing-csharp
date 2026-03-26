@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/StringCasing/StringCasing.csproj"/>
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/StringCasing.Tests/StringCasing.Tests.csproj"/>
+  </Folder>
+</Solution>

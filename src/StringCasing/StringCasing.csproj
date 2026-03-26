@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- NuGet metadata -->
+    <PackageId>StringCasing</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Frank Hommers</Authors>
+    <Description>High-performance source-only string case conversion extensions using Span and stackalloc. Supports PascalCase, camelCase, kebab-case, snake_case, MACRO_CASE, Train-Case, and more.</Description>
+    <PackageTags>string;case;extension;pascal;camel;kebab;snake;macro;train;span;performance</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/frankhommers/stringcasing-csharp</RepositoryUrl>
+
+    <!-- Source-only package config -->
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <NoWarn>NU5128</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="StringCasing.Tests"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="buildTransitive\**" />
+    <None Include="buildTransitive\StringCasing.props" Pack="true" PackagePath="buildTransitive" Visible="false" />
+    <None Include="WordSplitter.cs" Pack="true" PackagePath="contentFiles\cs\any" BuildAction="Compile" />
+    <None Include="WordCasing.cs" Pack="true" PackagePath="contentFiles\cs\any" BuildAction="Compile" />
+    <None Include="StringCasingExtensions.cs" Pack="true" PackagePath="contentFiles\cs\any" BuildAction="Compile" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+</Project>

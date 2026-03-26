@@ -1,4 +1,5 @@
 using System.Buffers;
+using System.Diagnostics.CodeAnalysis;
 
 namespace StringCasing;
 
@@ -6,76 +7,91 @@ internal static class StringCasingExtensions
 {
   private const int StackAllocThreshold = 256;
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToPascalCase(this string? input)
   {
     return ConvertCase(input, '\0', false, WordCasing.Title, WordCasing.Title, '\0');
   }
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToCamelCase(this string? input)
   {
     return ConvertCase(input, '\0', false, WordCasing.Lower, WordCasing.Title, '\0');
   }
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToDotNetPascalCase(this string? input)
   {
     return ConvertCase(input, '\0', false, WordCasing.DotNetTitle, WordCasing.DotNetTitle, '\0');
   }
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToDotNetCamelCase(this string? input)
   {
     return ConvertCase(input, '\0', false, WordCasing.Lower, WordCasing.DotNetTitle, '\0');
   }
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToKebabCase(this string? input)
   {
     return ConvertCase(input, '-', true, WordCasing.Lower, WordCasing.Lower, '\0');
   }
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToSnakeCase(this string? input)
   {
     return ConvertCase(input, '_', true, WordCasing.Lower, WordCasing.Lower, '\0');
   }
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToCobolCase(this string? input)
   {
     return ConvertCase(input, '-', true, WordCasing.Upper, WordCasing.Upper, '\0');
   }
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToMacroCase(this string? input)
   {
     return ConvertCase(input, '_', true, WordCasing.Upper, WordCasing.Upper, '\0');
   }
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToTrainCase(this string? input)
   {
     return ConvertCase(input, '-', true, WordCasing.Title, WordCasing.Title, '\0');
   }
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToTitleCase(this string? input)
   {
     return ConvertCase(input, ' ', true, WordCasing.Title, WordCasing.Title, '\0');
   }
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToTitleSnakeCase(this string? input)
   {
     return ConvertCase(input, '_', true, WordCasing.Title, WordCasing.Title, '\0');
   }
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToPrivateSnakeCase(this string? input)
   {
     return ConvertCase(input, '_', true, WordCasing.Lower, WordCasing.Lower, '_');
   }
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToUnderscoreCamelCase(this string? input)
   {
     return ConvertCase(input, '\0', false, WordCasing.Lower, WordCasing.Title, '_');
   }
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToDotCase(this string? input)
   {
     return ConvertCase(input, '.', true, WordCasing.Lower, WordCasing.Lower, '\0');
   }
 
+  [return: NotNullIfNotNull(nameof(input))]
   public static string? ToFlatCase(this string? input)
   {
     return ConvertCase(input, '\0', false, WordCasing.Lower, WordCasing.Lower, '\0');

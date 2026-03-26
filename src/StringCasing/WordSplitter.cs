@@ -9,14 +9,12 @@ internal ref struct WordSplitter
   private readonly ReadOnlySpan<char> _source;
   private int _position;
   private ReadOnlySpan<char> _current;
-  private bool _splitSingleUpperLetters;
 
   public WordSplitter(ReadOnlySpan<char> source)
   {
     _source = source;
     _position = 0;
     _current = default;
-    _splitSingleUpperLetters = false;
   }
 
   public readonly ReadOnlySpan<char> Current => _current;
@@ -79,18 +77,6 @@ internal ref struct WordSplitter
           }
 
           _position++;
-        }
-
-        // If the run reached end-of-string (or separator/digit) without a lowercase
-        // transition, check if this is a short all-uppercase sequence at the very
-        // start of the input. Short sequences like "ABC" are treated as individual
-        // single-letter words (PascalCase convention) rather than as a single acronym.
-        int runLength = _position - start;
-        bool reachedEnd = _position >= _source.Length;
-        if (reachedEnd && (start == 0 || _splitSingleUpperLetters) && runLength <= 3)
-        {
-          _position = start + 1;
-          _splitSingleUpperLetters = true;
         }
       }
       else

@@ -55,9 +55,9 @@ public class EdgeCaseTests
   }
 
   [Fact]
-  public void SingleLetterWords()
+  public void AllUppercaseShortWord_TreatedAsSingleWord()
   {
-    Assert.Equal("a-b-c", "ABC".ToKebabCase());
+    Assert.Equal("abc", "ABC".ToKebabCase());
   }
 
   [Fact]

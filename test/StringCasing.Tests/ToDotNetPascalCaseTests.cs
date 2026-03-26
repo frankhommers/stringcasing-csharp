@@ -18,6 +18,7 @@ public class ToDotNetPascalCaseTests
   [InlineData("IOStream", "IOStream")]
   [InlineData("DBConnection", "DBConnection")]
   [InlineData("PERMISSIVE", "Permissive")]
+  [InlineData("SIG", "Sig")]
   [InlineData("item2Count", "Item2Count")]
   [InlineData("a", "A")]
   [InlineData("", "")]

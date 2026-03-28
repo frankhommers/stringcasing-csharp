@@ -184,8 +184,10 @@ internal static class StringCasingExtensions
         break;
 
       case WordCasing.DotNetTitle:
-        // MS convention: 2-letter all-uppercase acronyms stay uppercase
-        if (word.Length == 2 && char.IsUpper(word[0]) && char.IsUpper(word[1]))
+        // MS convention: 2-letter all-uppercase acronyms stay uppercase,
+        // except words in the MS compound terms list (Id, Ok, Pi, Db)
+        if (word.Length == 2 && char.IsUpper(word[0]) && char.IsUpper(word[1])
+            && !IsDotNetTitleException(word))
         {
           buffer[pos++] = word[0];
           buffer[pos++] = word[1];
@@ -215,6 +217,9 @@ internal static class StringCasingExtensions
   /// A zero-allocation ref struct that splits a string into words by detecting
   /// case transitions, digit boundaries, and separator characters.
   /// </summary>
+  private static bool IsDotNetTitleException(ReadOnlySpan<char> word) =>
+    word is "ID" or "OK" or "PI" or "DB";
+
   private ref struct WordSplitter
   {
     private readonly ReadOnlySpan<char> _source;

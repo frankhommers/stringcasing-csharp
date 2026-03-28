@@ -67,18 +67,6 @@ public class EdgeCaseTests
   }
 
   [Fact]
-  public void PrivateSnakeCase_EmptyReturnsEmpty()
-  {
-    Assert.Equal("", "".ToPrivateSnakeCase());
-  }
-
-  [Fact]
-  public void UnderscoreCamelCase_EmptyReturnsEmpty()
-  {
-    Assert.Equal("", "".ToUnderscoreCamelCase());
-  }
-
-  [Fact]
   public void LongString_UsesArrayPool()
   {
     // Generate a string longer than 256 chars (stackalloc threshold)
@@ -101,12 +89,6 @@ public class EdgeCaseTests
   }
 
   [Fact]
-  public void PrivateSnakeCase_WithAlreadyPrefixed()
-  {
-    Assert.Equal("_private_field", "_privateField".ToPrivateSnakeCase());
-  }
-
-  [Fact]
   public void AllSupportedConversionsFromSameInput()
   {
     const string input = "parseHTTPResponse";
@@ -116,12 +98,10 @@ public class EdgeCaseTests
     Assert.Equal("parse-http-response", input.ToKebabCase());
     Assert.Equal("PARSE-HTTP-RESPONSE", input.ToCobolCase());
     Assert.Equal("parse_http_response", input.ToSnakeCase());
-    Assert.Equal("_parse_http_response", input.ToPrivateSnakeCase());
     Assert.Equal("Parse_Http_Response", input.ToTitleSnakeCase());
     Assert.Equal("PARSE_HTTP_RESPONSE", input.ToMacroCase());
     Assert.Equal("Parse-Http-Response", input.ToTrainCase());
     Assert.Equal("Parse Http Response", input.ToTitleCase());
-    Assert.Equal("_parseHttpResponse", input.ToUnderscoreCamelCase());
     Assert.Equal("parse.http.response", input.ToDotCase());
     Assert.Equal("parsehttpresponse", input.ToFlatCase());
   }

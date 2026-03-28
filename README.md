@@ -22,8 +22,6 @@ using StringCasing;
 "parseHTTPResponse".ToTrainCase();            // Parse-Http-Response
 "parseHTTPResponse".ToTitleCase();            // Parse Http Response
 "parseHTTPResponse".ToTitleSnakeCase();       // Parse_Http_Response
-"parseHTTPResponse".ToPrivateSnakeCase();     // _parse_http_response
-"parseHTTPResponse".ToUnderscoreCamelCase();  // _parseHttpResponse
 "parseHTTPResponse".ToDotCase();              // parse.http.response
 "parseHTTPResponse".ToFlatCase();             // parsehttpresponse
 ```

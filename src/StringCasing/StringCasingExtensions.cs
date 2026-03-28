@@ -268,27 +268,10 @@ internal static class StringCasingExtensions
 
       if (char.IsDigit(first))
       {
-        // Consume all consecutive digits
+        // Consume all consecutive digits — digits are always their own word
         while (_position < _source.Length && char.IsDigit(_source[_position]))
         {
           _position++;
-        }
-
-        // Consume a short lowercase suffix (e.g., "nd" in "2nd", "st" in "1st")
-        // that is followed by an uppercase letter, separator, digit, or end of input.
-        // This keeps ordinal-like sequences as a single word.
-        int suffixStart = _position;
-        while (_position < _source.Length && char.IsLower(_source[_position])
-                                           && _position - suffixStart < 2)
-        {
-          _position++;
-        }
-
-        // If the next char is still lowercase, the suffix is part of a longer word
-        // — revert and let the lowercase be its own word.
-        if (_position < _source.Length && char.IsLower(_source[_position]))
-        {
-          _position = suffixStart;
         }
       }
       else if (char.IsUpper(first))

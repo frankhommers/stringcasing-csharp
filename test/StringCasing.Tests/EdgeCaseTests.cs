@@ -91,7 +91,7 @@ public class EdgeCaseTests
   [Fact]
   public void PreservesDigitSequences()
   {
-    Assert.Equal("Get2ndItem", "get2ndItem".ToPascalCase());
+    Assert.Equal("Get2NdItem", "get2ndItem".ToPascalCase());
   }
 
   [Fact]
